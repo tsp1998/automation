@@ -1,0 +1,27 @@
+<body>
+	<textarea id="text"></textarea>
+	<button>Post Data</button>
+	<script>
+		window.onload = () => {
+			const SERVER_API = 'http://localhost:5000'
+			const textInput = document.getElementById('text')
+			const postDataButton = document.querySelector('button')
+			const postData = async () => {
+				const formData = new FormData()
+				formData.append('data', textInput.value)
+				try {
+					const response = await fetch(SERVER_API, {
+						method: 'POST', body: formData
+					})
+					console.log('response', response)
+				} catch (error) {
+					console.log('error', error)
+				}
+			}
+			postDataButton.addEventListener('click', postData)
+			window.onbeforeunload = () => {
+				postDataButton.removeEventListener('click', postData)
+			}
+		}
+	</script>
+</body>
