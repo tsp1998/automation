@@ -7,6 +7,7 @@
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.0.3",
+    "fluent-ffmpeg": "^2.1.2",
     "googleapis": "^108.0.1",
     "nodejs-file-downloader": "^4.10.2"
   }
