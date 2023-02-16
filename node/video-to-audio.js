@@ -6,8 +6,8 @@ ffmpeg.setFfmpegPath(ffmpegPath);
 
 let format = 'mp3'
 const result = {}
-const srcFolderPath = '/home/royaltsp/Music/Aarambh'
-const destFolderPath = '/home/royaltsp/Music/Aarambh2'
+const srcFolderPath = '/home/royaltsp/Videos/business motivation/to-audio'
+const destFolderPath = '/home/royaltsp/Videos/business motivation/to-audio'
 const fileName = ''
 
 let files = []

@@ -3,13 +3,17 @@
   "version": "1.0.0",
   "description": "",
   "keywords": [],
-  "author": "",
+  "author": "Shubham Tandale",
   "license": "ISC",
   "dependencies": {
     "@ffmpeg-installer/ffmpeg": "^1.1.0",
     "dotenv": "^16.0.3",
     "fluent-ffmpeg": "^2.1.2",
     "googleapis": "^108.0.1",
-    "nodejs-file-downloader": "^4.10.2"
+    "nodejs-file-downloader": "^4.10.2",
+    "split-file-stream": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/fluent-ffmpeg": "^2.1.20"
   }
 }
