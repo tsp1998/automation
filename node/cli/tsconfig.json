@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "lib": [
+      "ESNext",
+      "DOM"
+    ],
+    "module": "ESNext",
+    "target": "es5",
+    "moduleResolution": "node",
+    "types": [
+      "node"
+    ],
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "sourceMap": true
+  },
+  "include": [
+    "/home/*/tsp/royaltsp/types",
+    "."
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "/home/*/tsp/royaltsp/types/samples"
+  ]
+}

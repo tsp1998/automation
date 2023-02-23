@@ -1,0 +1,16 @@
+{
+  "name": "automation-cli",
+  "version": "0.0.0",
+  "private": true,
+  "bin": {
+    "title-case": "dist/title-case.js",
+    "upper-case": "dist/upper-case.js"
+  },
+  "scripts": {
+    "title-case": "node make-cli title-case.ts",
+    "upper-case": "node make-cli upper-case.ts"
+  },
+  "devDependencies": {
+    "@types/node": "file:~/tsp/libs/node/@types/node_modules/@types/node"
+  }
+}
