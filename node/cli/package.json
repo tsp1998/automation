@@ -4,11 +4,13 @@
   "private": true,
   "bin": {
     "title-case": "dist/title-case.js",
-    "upper-case": "dist/upper-case.js"
+    "upper-case": "dist/upper-case.js",
+    "install": "dist/install.js"
   },
   "scripts": {
     "title-case": "node make-cli title-case.ts",
-    "upper-case": "node make-cli upper-case.ts"
+    "upper-case": "node make-cli upper-case.ts",
+    "install_": "node make-cli install.ts"
   },
   "devDependencies": {
     "@types/node": "file:~/tsp/libs/node/@types/node_modules/@types/node"

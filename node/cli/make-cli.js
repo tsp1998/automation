@@ -1,9 +1,17 @@
 const { execSync } = require('child_process')
 const filePath = process.argv[2]
 
-execSync(`tsc ${filePath} --outDir dist`)
+try {
+  execSync(`tsc ${filePath} --outDir dist`)
+} catch (error) {
+  console.log(`error`, error.message)
+}
 const distFilePath = `./dist/${filePath.replace('ts', 'js')}`
-execSync(`chmod +x ${distFilePath}`)
+try {
+  execSync(`chmod +x ${distFilePath}`)
+} catch (error) {
+  console.log(`error`, error.message)
+}
 
 const fs = require('fs')
 const content = fs.readFileSync(distFilePath, 'utf-8')

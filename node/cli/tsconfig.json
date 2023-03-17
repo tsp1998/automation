@@ -18,12 +18,14 @@
     "sourceMap": true
   },
   "include": [
-    "/home/*/tsp/royaltsp/types",
+    "/home/*/tsp/royaltsp/royaltsp-types",
+    "C:/Users/*/tsp/royaltsp/royaltsp-types",
     "."
   ],
   "exclude": [
     "node_modules",
     "dist",
-    "/home/*/tsp/royaltsp/types/samples"
+    "/home/*/tsp/royaltsp/types/samples",
+    "C:/Users/*/tsp/royaltsp/royaltsp-types/samples"
   ]
 }
