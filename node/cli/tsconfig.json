@@ -4,7 +4,7 @@
       "ESNext",
       "DOM"
     ],
-    "module": "ESNext",
+    "module": "CommonJS",
     "target": "es5",
     "moduleResolution": "node",
     "types": [
@@ -15,17 +15,18 @@
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
-    "sourceMap": true
+    "sourceMap": true,
+    "outDir": "build"
   },
   "include": [
-    "/home/*/tsp/royaltsp/royaltsp-types",
-    "C:/Users/*/tsp/royaltsp/royaltsp-types",
-    "."
+    "/home/*/tsp/royaltsp/royaltsp-ts/src/@types",
+    "C:/Users/*/tsp/royaltsp/royaltsp-ts/src/@types",
+    ".",
+    "src",
+    "utils"
   ],
   "exclude": [
     "node_modules",
-    "dist",
-    "/home/*/tsp/royaltsp/types/samples",
-    "C:/Users/*/tsp/royaltsp/royaltsp-types/samples"
+    "dist"
   ]
 }

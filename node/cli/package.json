@@ -5,14 +5,20 @@
   "bin": {
     "title-case": "dist/title-case.js",
     "upper-case": "dist/upper-case.js",
-    "install": "dist/install.js"
+    "install": "dist/install.js",
+    "tsp": "dist/tsp.js",
+    "t2js": "dist/type-to-json-schema.js"
   },
   "scripts": {
-    "title-case": "node make-cli title-case.ts",
-    "upper-case": "node make-cli upper-case.ts",
-    "install_": "node make-cli install.ts"
+    "title-case": "node make-cli src/title-case.ts",
+    "upper-case": "node make-cli src/upper-case.ts",
+    "install_": "node make-cli src/install.ts",
+    "tsp": "node make-cli src/tsp.ts",
+    "t2js": "node make-cli src/type-to-json-schema.ts",
+    "tscw": "tsc -w"
   },
   "devDependencies": {
-    "@types/node": "file:~/tsp/libs/node/@types/node_modules/@types/node"
+    "@types/node": "file:~/tsp/libs/node/@types/node_modules/@types/node",
+    "typescript-json-schema": "file:~/tsp/libs/node/typescript-json-schema/node_modules/typescript-json-schema"
   }
 }

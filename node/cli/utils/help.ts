@@ -26,8 +26,31 @@ export const processArgs = (helpData: $struct.KeyValue<HelpDataValue>): ArgsValu
   return argsValues
 }
 
-export const help = (helpData: $struct.KeyValue<HelpDataValue>): ArgsValues | null => {
-  let returnData: ArgsValues | null = null;
+type HelpFnReturn = {
+  argsValues: ArgsValues | null,
+  helpOutput: string
+}
+
+export const help = (helpData: $struct.KeyValue<HelpDataValue>): HelpFnReturn => {
+  let $dataReturn: HelpFnReturn = {
+    argsValues: null,
+    helpOutput: ''
+  };
+
+  $dataReturn.helpOutput += 'help--\n'
+  for (const key in helpData) {
+    let output = key
+    let metaFieldsString = ''
+    if (helpData[key].required) {
+      metaFieldsString += 'required, '
+    }
+    if (metaFieldsString) {
+      output += `[${metaFieldsString}]`
+    }
+    output += `\t=>\t${helpData[key].info}`
+    $dataReturn.helpOutput += output + '\n'
+  }
+
   try {
     const argsValues = processArgs(helpData)
     const requiredFields = []
@@ -42,23 +65,11 @@ export const help = (helpData: $struct.KeyValue<HelpDataValue>): ArgsValues | nu
       throw { default: { message: `Values missing for ${requiredFields.join(', ')}` } } as $Error
     }
 
-    returnData = argsValues
+    $dataReturn.argsValues = argsValues
   } catch (error) {
-    console.log('help--')
-    for (const key in helpData) {
-      let output = key
-      let metaFieldsString = ''
-      if (helpData[key].required) {
-        metaFieldsString += 'required, '
-      }
-      if (metaFieldsString) {
-        output += `[${metaFieldsString}]`
-      }
-      output += `\t=>\t${helpData[key].info}`
-      console.log(output)
-    }
+    console.log($dataReturn.helpOutput)
     console.log(`error`, error.message)
   }
-  
-  return returnData
+
+  return $dataReturn
 }

@@ -1,0 +1,17 @@
+{
+  "extends": "tsconfig.json",
+  "compilerOptions": {
+    "outDir": "dist"
+  },
+  "include": [
+    "/home/*/tsp/royaltsp/royaltsp-ts/src/@types",
+    "C:/Users/*/tsp/royaltsp/royaltsp-ts/src/@types",
+    ".",
+    "src",
+    "utils"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}

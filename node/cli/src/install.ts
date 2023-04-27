@@ -2,23 +2,23 @@ import { existsSync } from 'fs'
 import { copyFile, readFile, unlink, writeFile } from 'fs/promises'
 import { homedir } from 'os'
 import { join } from 'path'
-import execSync from './utils/exec-sync'
-import { help, HelpDataValue } from './utils/help'
+import execSync from '../utils/exec-sync'
+import { help, HelpDataValue } from '../utils/help'
 const homeDir = homedir()
 
 const visitedPaths: $struct.KeyValue<boolean> = {}
 
 const install: $Fn<{
-  async: true,
+  $async: true,
   $data: { folderPath: string },
   $dataOptional: {
     oneByOne: boolean,
     dependeciesNamesString: string,
     packageManager: string
   },
-  returnData: boolean
+  $dataReturn: boolean
 }> = async ({ $data, $dataOptional }) => {
-  const returnData: Awaited<ReturnType<typeof install>> = { $data: false }
+  const $dataReturn: Awaited<ReturnType<typeof install>> = { $data: false }
   try {
     if (visitedPaths[$data.folderPath]) {
       throw { default: { code: 'FOLDER_VISITED', message: 'already visited this folder' } } as $Error
@@ -82,11 +82,11 @@ const install: $Fn<{
 
         if (dependecyValue.includes('file:') && !dependecyValue.includes('node_modules')) {
           console.log(`installing nested dependecies for ${key}`)
-          const { $data, error } = await install({
+          const { $data, e } = await install({
             $data: { folderPath: dependecyValue.replace('file:', '').replace('~', homeDir) },
             $dataOptional: { packageManager }
           })
-          console.log($data, error)
+          console.log($data, e)
         }
 
         console.log(`installing ${key}`)
@@ -98,7 +98,7 @@ const install: $Fn<{
         const { error } = execSync(`cd ${$data.folderPath} && ${packageManager} install`, false)
 
         if (error) {
-          console.log(`error`, error?.default?.code, error?.default?.message)
+          console.log(`error`, error?.$?.code, error?.$?.message)
           delete packageJson[dependencyKey][key]
         } else {
           delete dependenciesMap[dependencyKey][key]
@@ -127,11 +127,11 @@ const install: $Fn<{
     console.log('final install to make sure if something is remaining')
     execSync(`cd ${$data.folderPath} && ${packageManager} install`, false);
 
-    returnData.$data = true
+    $dataReturn.$data = true
   } catch (error) {
-    returnData.error = error
+    $dataReturn.e = error
   }
-  return returnData
+  return $dataReturn
 }
 
 const main = async () => {
@@ -141,17 +141,17 @@ const main = async () => {
     dependeciesNames: { info: 'dependecies names comma separated' },
   }
 
-  const argsValues = help(helpData)
+  const { argsValues } = help(helpData)
 
   if (argsValues) {
-    const { $data, error } = await install({
+    const { $data, e } = await install({
       $data: { folderPath: argsValues.path },
       $dataOptional: {
         dependeciesNamesString: argsValues.dependeciesNames,
         packageManager: argsValues.packageManager
       }
     })
-    console.log($data, error)
+    console.log($data, e)
   }
 }
 

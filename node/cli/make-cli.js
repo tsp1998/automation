@@ -2,11 +2,14 @@ const { execSync } = require('child_process')
 const filePath = process.argv[2]
 
 try {
-  execSync(`tsc ${filePath} --outDir dist`)
+  // const command = `tsc ${filePath} -p dist.tsconfig.json`
+  const command = `tsc -p dist.tsconfig.json`
+  console.log(`command`, command)
+  execSync(command)
 } catch (error) {
   console.log(`error`, error.message)
 }
-const distFilePath = `./dist/${filePath.replace('ts', 'js')}`
+const distFilePath = `./dist/${filePath.replace('.ts', '.js').replace('src/', '')}`
 try {
   execSync(`chmod +x ${distFilePath}`)
 } catch (error) {

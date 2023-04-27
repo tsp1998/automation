@@ -2,7 +2,7 @@ const selectAndAttchToWindow: $Fn<{
   $data: string,
   isPlainParams: true,
   dataArray: [string],
-  returnSkip: true
+  skipReturn: true
 }> = (selector, windowId) => {
   type $Window = {
     [key: (string & {})]: any

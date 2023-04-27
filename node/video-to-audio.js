@@ -6,8 +6,8 @@ ffmpeg.setFfmpegPath(ffmpegPath);
 
 let format = 'mp3'
 const result = {}
-const srcFolderPath = '/home/royaltsp/Videos/business motivation/to-audio'
-const destFolderPath = '/home/royaltsp/Videos/business motivation/to-audio'
+const srcFolderPath = '/home/royaltsp/Public/a'
+const destFolderPath = '/home/royaltsp/Public/a-done'
 const fileName = ''
 
 let files = []
@@ -69,7 +69,7 @@ for (let i = 0; i < files.length; i++) {
     })
     .on('progress', progress => {
       clearTimeout(timer)
-      console.log(`${files[i]} progress: [targetSize=${progress.targetSize}], [timemark=${progress.timemark}]`)
+      //console.log(`${files[i]} progress: [targetSize=${progress.targetSize}], [timemark=${progress.timemark}]`)
       timer = setTimeout(() => {
         console.log(`result`, result)
       }, 1000)
